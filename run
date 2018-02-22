@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+namespace Behavioral\Interpreter;
+
+require_once 'vendor/autoload.php';
+
+$depository = new Depository();
+
+$depository->setItem(new Item('Korn', 'Korn'));
+$depository->setItem(new Item('Deftones', 'Adrenaline'));
+
+$interpreter = new Interpreter($depository);
+
+$interpreter->interpret('album 2');
+$interpreter->interpret('album author 2');
+$interpreter->interpret('album author 1');
+$interpreter->interpret('author 1');
