@@ -21,8 +21,8 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
     {
         $this->depository = new \Behavioral\Interpreter\Depository();
 
-        $this->depository->setItems(new \Behavioral\Interpreter\Item('Korn', 'Korn'));
-        $this->depository->setItems(new \Behavioral\Interpreter\Item('Deftones', 'Adrenaline'));
+        $this->depository->setItem(new \Behavioral\Interpreter\Item('Korn', 'Korn'));
+        $this->depository->setItem(new \Behavioral\Interpreter\Item('Deftones', 'Adrenaline'));
 
         $this->interpreter = new \Behavioral\Interpreter\Interpreter($this->depository);
     }
@@ -44,12 +44,12 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
         ob_start();
         $this->assertNull($this->getInterpreter()->interpret('album 2'));
         $album = ob_get_clean();
-        $this->assertEquals($album, " Альбом: Adrenaline");
+        $this->assertEquals($album, " Альбом: Adrenaline\r\n");
 
         ob_start();
         $this->assertNull($this->getInterpreter()->interpret('2 album'));
         $album = ob_get_clean();
-        $this->assertEquals($album, " Альбом: Adrenaline");
+        $this->assertEquals($album, " Альбом: Adrenaline\r\n");
     }
 
     public function testAuthor(): void
@@ -57,12 +57,12 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
         ob_start();
         $this->assertNull($this->getInterpreter()->interpret('author 2'));
         $album = ob_get_clean();
-        $this->assertEquals($album, " Автор: Deftones");
+        $this->assertEquals($album, " Автор: Deftones\r\n");
 
         ob_start();
         $this->assertNull($this->getInterpreter()->interpret('2 author'));
         $album = ob_get_clean();
-        $this->assertEquals($album, " Автор: Deftones");
+        $this->assertEquals($album, " Автор: Deftones\r\n");
     }
 
     /**
