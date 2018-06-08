@@ -1,39 +1,32 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 /**
- * Date: 27.05.16
- * Time: 12:52
- * 
  * @author    : Korotkov Danila <dankorot@gmail.com>
- * @copyright Copyright (c) 2016, Korotkov Danila
- * @license   http://www.gnu.org/licenses/gpl.html GNU GPLv3.0
+ * @license   https://mit-license.org/ MIT
  */
 
 namespace Behavioral\Interpreter;
 
 /**
  * Class Interpreter
- *
  * @package Behavioral\Interpreter
  */
 class Interpreter
 {
 
     /**
+     * @var Item
+     */
+    protected $item;
+    /**
      * @var Depository
      */
     protected $depository;
 
     /**
-     * @var
-     */
-    protected $item;
-
-    /**
      * Interpreter constructor.
-     *
      * @param Depository $depository
      */
     public function __construct(Depository $depository)
@@ -42,61 +35,34 @@ class Interpreter
     }
 
     /**
-     * @param string $inputString
+     * @param string $input
      */
-    public function interpret(string $inputString)
+    public function interpret(string $input)
     {
-        if (count($this->getDepository()->getItems())) {
+        if (count($this->depository->getItems())) {
 
-            $arrayValues = explode(' ', $inputString);
+            $values = explode(' ', $input);
 
-            foreach ($arrayValues as $parsedString) {
-                if (is_numeric($parsedString)) {
-                    $this->setItem($this->getDepository()->getItem($parsedString - 1));
+            foreach ($values as $value) {
+                if (is_numeric($value)) {
+                    $this->item = $this->depository->getItem($value - 1);
                 }
             }
 
-            $this->getValue($arrayValues);
-        }
-    }
-
-    /**
-     * @param array $arrayValues
-     */
-    public function getValue(array $arrayValues): void
-    {
-        foreach ($arrayValues as $value) {
-            if ('author' == $value) {
-                print ' Автор: ' . $this->getItem()->getAuthor();
-            } elseif ('album' == $value) {
-                print ' Альбом: ' . $this->getItem()->getAlbum();
+            if ($this->item instanceof Item) {
+                foreach ($values as $value) {
+                    switch ($value) {
+                        case 'author':
+                            printf('%s: %s', ' Author', $this->item->getAuthor());
+                            break;
+                        case 'album':
+                            printf('%s: %s', ' Album', $this->item->getAlbum());
+                            break;
+                    }
+                }
             }
+
+            printf('%s', "\n");
         }
-
-        print "\r\n";
-    }
-
-    /**
-     * @return Item
-     */
-    public function getItem(): Item
-    {
-        return $this->item;
-    }
-
-    /**
-     * @param Item $item
-     */
-    public function setItem(Item $item)
-    {
-        $this->item = $item;
-    }
-
-    /**
-     * @return Depository
-     */
-    public function getDepository(): Depository
-    {
-        return $this->depository;
     }
 }
