@@ -37,32 +37,46 @@ class Interpreter
     /**
      * @param string $input
      */
-    public function interpret(string $input)
+    public function interpret(string $input): void
     {
         if (count($this->depository->getItems())) {
-
             $values = explode(' ', $input);
 
-            foreach ($values as $value) {
-                if (is_numeric($value)) {
-                    $this->item = $this->depository->getItem($value - 1);
-                }
-            }
-
-            if ($this->item instanceof Item) {
-                foreach ($values as $value) {
-                    switch ($value) {
-                        case 'author':
-                            printf('%s: %s', ' Author', $this->item->getAuthor());
-                            break;
-                        case 'album':
-                            printf('%s: %s', ' Album', $this->item->getAlbum());
-                            break;
-                    }
-                }
-            }
+            $this->setItem($values);
+            $this->printValue($values);
 
             printf('%s', "\n");
+        }
+    }
+
+    /**
+     * @param array $values
+     */
+    protected function setItem(array $values): void
+    {
+        foreach ($values as $value) {
+            if (is_numeric($value)) {
+                $this->item = $this->depository->getItem($value - 1);
+            }
+        }
+    }
+
+    /**
+     * @param array $values
+     */
+    protected function printValue(array $values): void
+    {
+        if ($this->item instanceof Item) {
+            foreach ($values as $value) {
+                switch ($value) {
+                    case 'author':
+                        printf('%s: %s', ' Author', $this->item->getAuthor());
+                        break;
+                    case 'album':
+                        printf('%s: %s', ' Album', $this->item->getAlbum());
+                        break;
+                }
+            }
         }
     }
 }
