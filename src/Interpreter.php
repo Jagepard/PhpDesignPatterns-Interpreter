@@ -13,7 +13,7 @@ namespace Behavioral\Interpreter;
  * Class Interpreter
  * @package Behavioral\Interpreter
  */
-class Interpreter
+class Interpreter implements InterpreterInterface
 {
 
     /**
