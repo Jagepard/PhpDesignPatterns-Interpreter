@@ -1,8 +1,19 @@
 ## Table of contents
 
+- [\Behavioral\Interpreter\InterpreterInterface (interface)](#interface-behavioralinterpreterinterpreterinterface)
 - [\Behavioral\Interpreter\Item](#class-behavioralinterpreteritem)
 - [\Behavioral\Interpreter\Interpreter](#class-behavioralinterpreterinterpreter)
 - [\Behavioral\Interpreter\Depository](#class-behavioralinterpreterdepository)
+
+<hr />
+
+### Interface: \Behavioral\Interpreter\InterpreterInterface
+
+> Interface InterpreterInterface
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>interpret(</strong><em>\string</em> <strong>$input</strong>)</strong> : <em>void</em> |
 
 <hr />
 
@@ -28,6 +39,8 @@
 | public | <strong>interpret(</strong><em>\string</em> <strong>$input</strong>)</strong> : <em>void</em> |
 | protected | <strong>printValue(</strong><em>array</em> <strong>$values</strong>)</strong> : <em>void</em> |
 | protected | <strong>setItem(</strong><em>array</em> <strong>$values</strong>)</strong> : <em>void</em> |
+
+*This class implements [\Behavioral\Interpreter\InterpreterInterface](#interface-behavioralinterpreterinterpreterinterface)*
 
 <hr />
 
