@@ -15,7 +15,6 @@ namespace Behavioral\Interpreter;
  */
 class Item
 {
-
     /**
      * @var string
      */
