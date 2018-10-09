@@ -15,7 +15,6 @@ namespace Behavioral\Interpreter;
  */
 interface InterpreterInterface
 {
-
     /**
      * @param string $input
      */

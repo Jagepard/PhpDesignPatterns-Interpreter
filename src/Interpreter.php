@@ -15,7 +15,6 @@ namespace Behavioral\Interpreter;
  */
 class Interpreter implements InterpreterInterface
 {
-
     /**
      * @var Item
      */
