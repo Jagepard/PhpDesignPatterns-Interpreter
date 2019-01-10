@@ -43,12 +43,12 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
         ob_start();
         $this->interpreter->interpret('album 2');
         $album = ob_get_clean();
-        $this->assertEquals($album, sprintf("%s: %s\n", ' Album', 'Adrenaline'));
+        $this->assertEquals($album, sprintf("%s \n",  'Adrenaline'));
 
         ob_start();
         $this->interpreter->interpret('2 album');
         $album = ob_get_clean();
-        $this->assertEquals($album, sprintf("%s: %s\n", ' Album', 'Adrenaline'));
+        $this->assertEquals($album, sprintf("%s \n",  'Adrenaline'));
     }
 
     public function testAuthor(): void
@@ -56,11 +56,11 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
         ob_start();
         $this->interpreter->interpret('author 2');
         $album = ob_get_clean();
-        $this->assertEquals($album, sprintf("%s: %s\n", ' Author', 'Deftones'));
+        $this->assertEquals($album, sprintf("%s\n",  'Deftones'));
 
         ob_start();
         $this->interpreter->interpret('2 author');
         $album = ob_get_clean();
-        $this->assertEquals($album, sprintf("%s: %s\n", ' Author', 'Deftones'));
+        $this->assertEquals($album, sprintf("%s\n",  'Deftones'));
     }
 }

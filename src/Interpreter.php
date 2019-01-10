@@ -38,44 +38,24 @@ class Interpreter implements InterpreterInterface
      */
     public function interpret(string $input): void
     {
-        if (count($this->depository->getItems())) {
-            $values = explode(' ', $input);
+        $input = explode(" ", $input);
 
-            $this->setItem($values);
-            $this->printValue($values);
-
-            printf('%s', "\n");
-        }
-    }
-
-    /**
-     * @param array $values
-     */
-    protected function setItem(array $values): void
-    {
-        foreach ($values as $value) {
+        foreach ($input as $value) {
             if (is_numeric($value)) {
-                $this->item = $this->depository->getItem($value - 1);
+                $item = $this->depository->getItems()[$value - 1];
             }
         }
-    }
 
-    /**
-     * @param array $values
-     */
-    protected function printValue(array $values): void
-    {
-        if ($this->item instanceof Item) {
-            foreach ($values as $value) {
-                switch ($value) {
-                    case 'author':
-                        printf('%s: %s', ' Author', $this->item->getAuthor());
-                        break;
-                    case 'album':
-                        printf('%s: %s', ' Album', $this->item->getAlbum());
-                        break;
-                }
+        foreach ($input as $value) {
+            if ($value == "album") {
+                printf("%s ", $item->getAlbum());
+            }
+
+            if ($value == "author") {
+                printf("%s", $item->getAuthor());
             }
         }
+
+        printf("%s", PHP_EOL);
     }
 }
