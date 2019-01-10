@@ -42,7 +42,7 @@ class Interpreter implements InterpreterInterface
 
         foreach ($input as $value) {
             if (is_numeric($value)) {
-                $item = $this->depository->getItems()[$value - 1];
+                $item = $this->depository->getDepository()[$value - 1];
             }
         }
 
