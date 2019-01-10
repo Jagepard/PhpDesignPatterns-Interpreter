@@ -37,8 +37,6 @@
 |:-----------|:---------|
 | public | <strong>__construct(</strong><em>[\Behavioral\Interpreter\Depository](#class-behavioralinterpreterdepository)</em> <strong>$depository</strong>)</strong> : <em>void</em><br /><em>Interpreter constructor.</em> |
 | public | <strong>interpret(</strong><em>\string</em> <strong>$input</strong>)</strong> : <em>void</em> |
-| protected | <strong>printValue(</strong><em>array</em> <strong>$values</strong>)</strong> : <em>void</em> |
-| protected | <strong>setItem(</strong><em>array</em> <strong>$values</strong>)</strong> : <em>void</em> |
 
 *This class implements [\Behavioral\Interpreter\InterpreterInterface](#interface-behavioralinterpreterinterpreterinterface)*
 
@@ -50,7 +48,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
+| public | <strong>getDepository()</strong> : <em>array</em> |
 | public | <strong>getItem(</strong><em>int/\integer</em> <strong>$value</strong>)</strong> : <em>[\Behavioral\Interpreter\Item](#class-behavioralinterpreteritem)</em> |
-| public | <strong>getItems()</strong> : <em>array</em> |
 | public | <strong>setItem(</strong><em>[\Behavioral\Interpreter\Item](#class-behavioralinterpreteritem)</em> <strong>$item</strong>)</strong> : <em>void</em> |
 

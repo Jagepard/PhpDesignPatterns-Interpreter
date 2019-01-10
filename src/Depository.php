@@ -18,14 +18,14 @@ class Depository
     /**
      * @var array
      */
-    protected $items = [];
+    protected $depository = [];
 
     /**
      * @return array
      */
-    public function getItems(): array
+    public function getDepository(): array
     {
-        return $this->items;
+        return $this->depository;
     }
 
     /**
@@ -33,7 +33,7 @@ class Depository
      */
     public function setItem(Item $item)
     {
-        $this->items[] = $item;
+        $this->depository[] = $item;
     }
 
     /**
@@ -42,6 +42,6 @@ class Depository
      */
     public function getItem(int $value): Item
     {
-        return $this->items[$value];
+        return $this->depository[$value];
     }
 }
