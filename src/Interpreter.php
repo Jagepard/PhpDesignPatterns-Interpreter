@@ -53,7 +53,7 @@ class Interpreter implements InterpreterInterface
 
         foreach ($input as $value) {
             if ($value == "album") {
-                printf("%s ", $item->getAlbum());
+                printf("%s ", $item->getName());
             }
 
             if ($value == "author") {

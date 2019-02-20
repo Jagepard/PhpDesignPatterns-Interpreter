@@ -38,7 +38,7 @@ class Album implements ItemInterface
     /**
      * @return string
      */
-    public function getAlbum(): string
+    public function getName(): string
     {
         return $this->name;
     }
