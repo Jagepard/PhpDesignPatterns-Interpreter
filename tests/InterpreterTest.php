@@ -23,11 +23,11 @@ use PHPUnit\Framework\TestCase as PHPUnit_Framework_TestCase;
 class InterpreterTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var Depository
+     * @var DepositoryInterface
      */
     protected $depository;
     /**
-     * @var Interpreter
+     * @var InterpreterInterface
      */
     protected $interpreter;
 
@@ -67,7 +67,7 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return Depository
+     * @return DepositoryInterface
      */
     public function getDepository(): DepositoryInterface
     {
@@ -75,7 +75,7 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return Interpreter
+     * @return InterpreterInterface
      */
     public function getInterpreter(): InterpreterInterface
     {
