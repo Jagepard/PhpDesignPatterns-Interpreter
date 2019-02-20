@@ -16,10 +16,6 @@ namespace Behavioral\Interpreter;
 class Interpreter implements InterpreterInterface
 {
     /**
-     * @var ItemInterface
-     */
-    protected $item;
-    /**
      * @var DepositoryInterface
      */
     protected $depository;
