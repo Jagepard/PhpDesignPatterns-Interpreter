@@ -9,9 +9,11 @@ declare(strict_types=1);
 
 namespace Behavioral\Interpreter\Tests;
 
-use Behavioral\Interpreter\Item;
+use Behavioral\Interpreter\Album;
 use Behavioral\Interpreter\Depository;
+use Behavioral\Interpreter\DepositoryInterface;
 use Behavioral\Interpreter\Interpreter;
+use Behavioral\Interpreter\InterpreterInterface;
 use PHPUnit\Framework\TestCase as PHPUnit_Framework_TestCase;
 
 /**
@@ -32,35 +34,51 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
     protected function setUp(): void
     {
         $this->depository = new Depository();
-        $this->depository->setItem(new Item('Korn', 'Korn'));
-        $this->depository->setItem(new Item('Deftones', 'Adrenaline'));
+        $this->getDepository()->setItem(new Album('Korn', 'Korn'));
+        $this->getDepository()->setItem(new Album('Deftones', 'Adrenaline'));
 
-        $this->interpreter = new Interpreter($this->depository);
+        $this->interpreter = new Interpreter($this->getDepository());
     }
 
     public function testAlbum(): void
     {
         ob_start();
-        $this->interpreter->interpret('album 2');
+        $this->getInterpreter()->interpret('album 2');
         $album = ob_get_clean();
-        $this->assertEquals($album, sprintf("%s \n",  'Adrenaline'));
+        $this->assertEquals($album, sprintf("%s \n",  'Deftones'));
 
         ob_start();
-        $this->interpreter->interpret('2 album');
+        $this->getInterpreter()->interpret('2 album');
         $album = ob_get_clean();
-        $this->assertEquals($album, sprintf("%s \n",  'Adrenaline'));
+        $this->assertEquals($album, sprintf("%s \n",  'Deftones'));
     }
 
     public function testAuthor(): void
     {
         ob_start();
-        $this->interpreter->interpret('author 2');
+        $this->getInterpreter()->interpret('author 2');
         $album = ob_get_clean();
-        $this->assertEquals($album, sprintf("%s\n",  'Deftones'));
+        $this->assertEquals($album, sprintf("%s\n",  'Adrenaline'));
 
         ob_start();
-        $this->interpreter->interpret('2 author');
+        $this->getInterpreter()->interpret('2 author');
         $album = ob_get_clean();
-        $this->assertEquals($album, sprintf("%s\n",  'Deftones'));
+        $this->assertEquals($album, sprintf("%s\n",  'Adrenaline'));
+    }
+
+    /**
+     * @return Depository
+     */
+    public function getDepository(): DepositoryInterface
+    {
+        return $this->depository;
+    }
+
+    /**
+     * @return Interpreter
+     */
+    public function getInterpreter(): InterpreterInterface
+    {
+        return $this->interpreter;
     }
 }
