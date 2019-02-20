@@ -7,8 +7,8 @@ require_once 'vendor/autoload.php';
 
 $depository = new Depository();
 
-$depository->setItem(new Item('Korn', 'Korn'));
-$depository->setItem(new Item('Deftones', 'Adrenaline'));
+$depository->setItem(new Album('Korn', 'Korn'));
+$depository->setItem(new Album('Deftones', 'Adrenaline'));
 
 $interpreter = new Interpreter($depository);
 

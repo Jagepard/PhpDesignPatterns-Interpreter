@@ -16,19 +16,15 @@ namespace Behavioral\Interpreter;
 class Interpreter implements InterpreterInterface
 {
     /**
-     * @var Item
-     */
-    protected $item;
-    /**
-     * @var Depository
+     * @var DepositoryInterface
      */
     protected $depository;
 
     /**
      * Interpreter constructor.
-     * @param Depository $depository
+     * @param DepositoryInterface $depository
      */
-    public function __construct(Depository $depository)
+    public function __construct(DepositoryInterface $depository)
     {
         $this->depository = $depository;
     }
@@ -36,19 +32,28 @@ class Interpreter implements InterpreterInterface
     /**
      * @param string $input
      */
-    public function interpret(string $input): void
+    public function interpret(string $input = null): void
     {
+        if (!isset($input)) {
+            throw new \InvalidArgumentException();
+        }
+
+        $item  = null;
         $input = explode(" ", $input);
 
         foreach ($input as $value) {
             if (is_numeric($value)) {
-                $item = $this->depository->getDepository()[$value - 1];
+                $item = $this->getDepository()->getItem($value - 1);
             }
+        }
+
+        if (!isset($item)) {
+            throw new \InvalidArgumentException();
         }
 
         foreach ($input as $value) {
             if ($value == "album") {
-                printf("%s ", $item->getAlbum());
+                printf("%s ", $item->getName());
             }
 
             if ($value == "author") {
@@ -57,5 +62,13 @@ class Interpreter implements InterpreterInterface
         }
 
         printf("%s", PHP_EOL);
+    }
+
+    /**
+     * @return DepositoryInterface
+     */
+    public function getDepository(): DepositoryInterface
+    {
+        return $this->depository;
     }
 }

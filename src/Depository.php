@@ -13,35 +13,31 @@ namespace Behavioral\Interpreter;
  * Class Depository
  * @package Behavioral\Interpreter
  */
-class Depository
+class Depository implements DepositoryInterface
 {
     /**
      * @var array
      */
-    protected $depository = [];
+    private $depository = [];
 
     /**
-     * @return array
+     * @param ItemInterface $item
      */
-    public function getDepository(): array
-    {
-        return $this->depository;
-    }
-
-    /**
-     * @param Item $item
-     */
-    public function setItem(Item $item)
+    public function setItem(ItemInterface $item): void
     {
         $this->depository[] = $item;
     }
 
     /**
      * @param int $value
-     * @return Item
+     * @return ItemInterface
      */
-    public function getItem(int $value): Item
+    public function getItem(int $value): ItemInterface
     {
-        return $this->depository[$value];
+        if (array_key_exists($value, $this->depository)) {
+            return $this->depository[$value];
+        }
+
+        throw new \InvalidArgumentException();
     }
 }
