@@ -10,31 +10,29 @@ declare(strict_types=1);
 namespace Behavioral\Interpreter;
 
 /**
- * Class Item
+ * Class Album
  * @package Behavioral\Interpreter
  */
-class Item
+class Album implements ItemInterface
 {
     /**
      * @var string
      */
-    protected $author;
-
+    private $name;
     /**
      * @var string
      */
-    protected $album;
+    private $author;
 
     /**
-     * Item constructor.
-     *
+     * Album constructor.
+     * @param string $name
      * @param string $author
-     * @param string $album
      */
-    public function __construct(string $author, string $album)
+    public function __construct(string $name, string $author)
     {
+        $this->name   = $name;
         $this->author = $author;
-        $this->album  = $album;
     }
 
     /**
@@ -42,7 +40,7 @@ class Item
      */
     public function getAlbum(): string
     {
-        return $this->album;
+        return $this->name;
     }
 
     /**
