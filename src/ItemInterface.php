@@ -7,10 +7,6 @@
 
 namespace Behavioral\Interpreter;
 
-/**
- * Interface ItemInterface
- * @package Behavioral\Interpreter
- */
 interface ItemInterface
 {
 
