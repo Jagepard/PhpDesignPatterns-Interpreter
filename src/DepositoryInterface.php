@@ -7,10 +7,6 @@
 
 namespace Behavioral\Interpreter;
 
-/**
- * Interface DepositoryInterface
- * @package Behavioral\Interpreter
- */
 interface DepositoryInterface
 {
     /**

@@ -9,10 +9,6 @@ declare(strict_types=1);
 
 namespace Behavioral\Interpreter;
 
-/**
- * Class Depository
- * @package Behavioral\Interpreter
- */
 class Depository implements DepositoryInterface
 {
     /**
@@ -38,6 +34,6 @@ class Depository implements DepositoryInterface
             return $this->depository[$value];
         }
 
-        throw new \InvalidArgumentException();
+        throw new \InvalidArgumentException('Item does not exist');
     }
 }

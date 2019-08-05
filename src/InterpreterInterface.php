@@ -9,10 +9,6 @@ declare(strict_types=1);
 
 namespace Behavioral\Interpreter;
 
-/**
- * Interface InterpreterInterface
- * @package Behavioral\Interpreter
- */
 interface InterpreterInterface
 {
     /**
