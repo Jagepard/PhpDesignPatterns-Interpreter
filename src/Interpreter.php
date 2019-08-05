@@ -9,10 +9,6 @@ declare(strict_types=1);
 
 namespace Behavioral\Interpreter;
 
-/**
- * Class Interpreter
- * @package Behavioral\Interpreter
- */
 class Interpreter implements InterpreterInterface
 {
     /**
@@ -32,12 +28,8 @@ class Interpreter implements InterpreterInterface
     /**
      * @param string $input
      */
-    public function interpret(string $input = null): void
+    public function interpret(string $input): void
     {
-        if (!isset($input)) {
-            throw new \InvalidArgumentException();
-        }
-
         $item  = null;
         $input = explode(" ", $input);
 
@@ -45,10 +37,6 @@ class Interpreter implements InterpreterInterface
             if (is_numeric($value)) {
                 $item = $this->getDepository()->getItem($value - 1);
             }
-        }
-
-        if (!isset($item)) {
-            throw new \InvalidArgumentException();
         }
 
         foreach ($input as $value) {
