@@ -9,10 +9,6 @@ declare(strict_types=1);
 
 namespace Behavioral\Interpreter;
 
-/**
- * Class Album
- * @package Behavioral\Interpreter
- */
 class Album implements ItemInterface
 {
     /**
