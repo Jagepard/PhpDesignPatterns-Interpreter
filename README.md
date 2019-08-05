@@ -6,6 +6,8 @@
 -----
 
 # Interpreter | [API](https://github.com/Jagepard/PhpDesignPatterns-Interpreter/blob/master/docs.md "Documentation API")
+```php run``` Запустить исполнение шаблона в терминале
+
 Интерпретатор
 
 ![Interpreter](https://github.com/Jagepard/PhpDesignPatterns-Interpreter/blob/master/UML.png)
