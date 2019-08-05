@@ -5,14 +5,16 @@ namespace Behavioral\Interpreter;
 
 require_once 'vendor/autoload.php';
 
-$depository = new Depository();
-
-$depository->setItem(new Album('Korn', 'Korn'));
-$depository->setItem(new Album('Deftones', 'Adrenaline'));
-
-$interpreter = new Interpreter($depository);
-
-$interpreter->interpret('album 2');
-$interpreter->interpret('album author 2');
-$interpreter->interpret('album author 1');
-$interpreter->interpret('author 1');
+try {
+    $depository = new Depository();
+    $depository->setItem(new Album('Korn', 'Untouchables'));
+    $depository->setItem(new Album('Deftones', 'Adrenaline'));
+    
+    $interpreter = new Interpreter($depository);   
+    $interpreter->interpret('album 2');
+    $interpreter->interpret('album author 2');
+    $interpreter->interpret('album author 1');
+    $interpreter->interpret('author 1');
+} catch (\Exception $e) {
+    printf('%s', 'Caught exception: ' . $e->getMessage() . "\n");
+}

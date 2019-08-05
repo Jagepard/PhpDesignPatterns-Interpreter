@@ -16,10 +16,6 @@ use Behavioral\Interpreter\Interpreter;
 use Behavioral\Interpreter\InterpreterInterface;
 use PHPUnit\Framework\TestCase as PHPUnit_Framework_TestCase;
 
-/**
- * Class InterpreterTest
- * @package Behavioral\Interpreter\Tests
- */
 class InterpreterTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -34,7 +30,7 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
     protected function setUp(): void
     {
         $this->depository = new Depository();
-        $this->getDepository()->setItem(new Album('Korn', 'Korn'));
+        $this->getDepository()->setItem(new Album('Korn', 'Untouchables'));
         $this->getDepository()->setItem(new Album('Deftones', 'Adrenaline'));
 
         $this->interpreter = new Interpreter($this->getDepository());
