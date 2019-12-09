@@ -6,11 +6,9 @@ namespace Behavioral\Interpreter;
 require_once 'vendor/autoload.php';
 
 try {
-    $depository = new Depository();
-    $depository->setItem(new Album('Korn', 'Untouchables'));
-    $depository->setItem(new Album('Deftones', 'Adrenaline'));
-    
-    $interpreter = new Interpreter($depository);   
+    $interpreter = new Interpreter();    
+    $interpreter->addItem(new Album('Korn', 'Untouchables'));
+    $interpreter->addItem(new Album('Deftones', 'Adrenaline'));
     $interpreter->interpret('album 2');
     $interpreter->interpret('album author 2');
     $interpreter->interpret('album author 1');

@@ -12,17 +12,16 @@ namespace Behavioral\Interpreter;
 class Interpreter implements InterpreterInterface
 {
     /**
-     * @var DepositoryInterface
+     * @var array
      */
-    protected $depository;
+    private $depository;
 
     /**
-     * Interpreter constructor.
-     * @param DepositoryInterface $depository
+     * @param ItemInterface $item
      */
-    public function __construct(DepositoryInterface $depository)
+    public function addItem(ItemInterface $item): void
     {
-        $this->depository = $depository;
+        $this->depository[] = $item;
     }
 
     /**
@@ -35,7 +34,7 @@ class Interpreter implements InterpreterInterface
 
         foreach ($input as $value) {
             if (is_numeric($value)) {
-                $item = $this->getDepository()->getItem($value - 1);
+                $item = $this->depository[$value - 1];
             }
         }
 
@@ -50,13 +49,5 @@ class Interpreter implements InterpreterInterface
         }
 
         printf("%s", PHP_EOL);
-    }
-
-    /**
-     * @return DepositoryInterface
-     */
-    public function getDepository(): DepositoryInterface
-    {
-        return $this->depository;
     }
 }
