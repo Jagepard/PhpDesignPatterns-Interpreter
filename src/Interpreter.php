@@ -17,9 +17,9 @@ class Interpreter implements InterpreterInterface
     private $registry;
 
     /**
-     * @param  ItemInterface  $item
+     * @param  AlbumInterface  $item
      */
-    public function addItemToRegistry(ItemInterface $item): void
+    public function addAlbumToRegistry(AlbumInterface $item): void
     {
         $this->registry[] = $item;
     }
@@ -43,7 +43,7 @@ class Interpreter implements InterpreterInterface
      * @param  array  $input
      * @param $item
      */
-    private function getDataFromRegistry(array $input, ItemInterface $item): void
+    private function getDataFromRegistry(array $input, AlbumInterface $item): void
     {
         foreach ($input as $value) {
             if ($value === "album") {

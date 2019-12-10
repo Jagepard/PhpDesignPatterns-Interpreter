@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Behavioral\Interpreter;
 
-class Album implements ItemInterface
+class Album implements AlbumInterface
 {
     /**
      * @var string
