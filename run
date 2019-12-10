@@ -6,8 +6,8 @@ namespace Behavioral\Interpreter;
 require_once 'vendor/autoload.php';
 
 $interpreter = new Interpreter();
-$interpreter->addItemToRegistry(new Album('Korn', 'Untouchables'));
-$interpreter->addItemToRegistry(new Album('Deftones', 'Adrenaline'));
+$interpreter->addAlbumToRegistry(new Album('Korn', 'Untouchables'));
+$interpreter->addAlbumToRegistry(new Album('Deftones', 'Adrenaline'));
 $interpreter->interpret('album 2');
 $interpreter->interpret('album author 2');
 $interpreter->interpret('album author 1');
