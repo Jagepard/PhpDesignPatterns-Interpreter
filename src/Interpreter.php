@@ -14,40 +14,44 @@ class Interpreter implements InterpreterInterface
     /**
      * @var array
      */
-    private $depository;
+    private $registry;
 
     /**
-     * @param ItemInterface $item
+     * @param  ItemInterface  $item
      */
-    public function addItem(ItemInterface $item): void
+    public function addItemToRegistry(ItemInterface $item): void
     {
-        $this->depository[] = $item;
+        $this->registry[] = $item;
     }
 
     /**
-     * @param string $input
+     * @param  string  $input
      */
     public function interpret(string $input): void
     {
-        $item  = null;
+        $item = null;
         $input = explode(" ", $input);
 
         foreach ($input as $value) {
             if (is_numeric($value)) {
-                $item = $this->depository[$value - 1];
+                $item = $this->registry[$value - 1];
             }
         }
 
-        foreach ($input as $value) {
-            if ($value == "album") {
-                printf("%s ", $item->getName());
+        if ($item instanceof ItemInterface) {
+            foreach ($input as $value) {
+                if ($value === "album") {
+                    printf("%s ", $item->getName());
+                }
+
+                if ($value === "author") {
+                    printf("%s", $item->getAuthor());
+                }
             }
 
-            if ($value == "author") {
-                printf("%s", $item->getAuthor());
-            }
+            printf("%s", PHP_EOL);
+        } else {
+            throw new \InvalidArgumentException('Missing id');
         }
-
-        printf("%s", PHP_EOL);
     }
 }

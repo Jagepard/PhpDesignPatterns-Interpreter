@@ -24,8 +24,8 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
     protected function setUp(): void
     {
         $this->interpreter = new Interpreter();
-        $this->interpreter->addItem(new Album('Korn', 'Untouchables'));
-        $this->interpreter->addItem(new Album('Deftones', 'Adrenaline'));
+        $this->interpreter->addItemToRegistry(new Album('Korn', 'Untouchables'));
+        $this->interpreter->addItemToRegistry(new Album('Deftones', 'Adrenaline'));
     }
 
     public function testAlbum(): void
