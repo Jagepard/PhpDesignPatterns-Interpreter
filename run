@@ -5,14 +5,11 @@ namespace Behavioral\Interpreter;
 
 require_once 'vendor/autoload.php';
 
-try {
-    $interpreter = new Interpreter();    
-    $interpreter->addItemToRegistry(new Album('Korn', 'Untouchables'));
-    $interpreter->addItemToRegistry(new Album('Deftones', 'Adrenaline'));
-    $interpreter->interpret('album 2');
-    $interpreter->interpret('album author 2');
-    $interpreter->interpret('album author 1');
-    $interpreter->interpret('author 1');
-} catch (\Exception $e) {
-    printf('%s', 'Caught exception: ' . $e->getMessage() . "\n");
-}
+$interpreter = new Interpreter();
+$interpreter->addItemToRegistry(new Album('Korn', 'Untouchables'));
+$interpreter->addItemToRegistry(new Album('Deftones', 'Adrenaline'));
+$interpreter->interpret('album 2');
+$interpreter->interpret('album author 2');
+$interpreter->interpret('album author 1');
+$interpreter->interpret('author 1');
+$interpreter->interpret('author');
