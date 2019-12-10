@@ -34,24 +34,27 @@ class Interpreter implements InterpreterInterface
 
         foreach ($input as $value) {
             if (is_numeric($value)) {
-                $item = $this->registry[$value - 1];
+                $this->getDataFromRegistry($input, $this->registry[$value - 1]);
+            }
+        }
+    }
+
+    /**
+     * @param  array  $input
+     * @param $item
+     */
+    private function getDataFromRegistry(array $input, ItemInterface $item): void
+    {
+        foreach ($input as $value) {
+            if ($value === "album") {
+                printf("%s ", $item->getName());
+            }
+
+            if ($value === "author") {
+                printf("%s", $item->getAuthor());
             }
         }
 
-        if ($item instanceof ItemInterface) {
-            foreach ($input as $value) {
-                if ($value === "album") {
-                    printf("%s ", $item->getName());
-                }
-
-                if ($value === "author") {
-                    printf("%s", $item->getAuthor());
-                }
-            }
-
-            printf("%s", PHP_EOL);
-        } else {
-            throw new \InvalidArgumentException('Missing id');
-        }
+        printf("%s", PHP_EOL);
     }
 }
