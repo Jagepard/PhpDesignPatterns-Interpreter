@@ -7,8 +7,8 @@ require_once 'vendor/autoload.php';
 
 try {
     $interpreter = new Interpreter();    
-    $interpreter->addItem(new Album('Korn', 'Untouchables'));
-    $interpreter->addItem(new Album('Deftones', 'Adrenaline'));
+    $interpreter->addItemToRegistry(new Album('Korn', 'Untouchables'));
+    $interpreter->addItemToRegistry(new Album('Deftones', 'Adrenaline'));
     $interpreter->interpret('album 2');
     $interpreter->interpret('album author 2');
     $interpreter->interpret('album author 1');
