@@ -5,7 +5,5 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-498e7f.svg)](https://mit-license.org/)
 -----
 
-# Interpreter | [API](https://github.com/Jagepard/PhpDesignPatterns-Interpreter/blob/master/docs.md "Documentation API")
+# Interpreter
 ```php run``` execute in terminal
-
-![Interpreter](https://github.com/Jagepard/PhpDesignPatterns-Interpreter/blob/master/UML.png)
