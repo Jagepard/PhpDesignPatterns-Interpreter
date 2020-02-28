@@ -9,17 +9,16 @@ declare(strict_types=1);
 
 namespace Behavioral\Interpreter\Tests;
 
-use Behavioral\Interpreter\Album;
-use Behavioral\Interpreter\Interpreter;
-use Behavioral\Interpreter\InterpreterInterface;
+use Behavioral\Interpreter\{
+    Album, 
+    Interpreter, 
+    InterpreterInterface
+};
 use PHPUnit\Framework\TestCase as PHPUnit_Framework_TestCase;
 
 class InterpreterTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     * @var InterpreterInterface
-     */
-    protected $interpreter;
+    protected InterpreterInterface $interpreter;
 
     protected function setUp(): void
     {

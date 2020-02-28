@@ -11,10 +11,7 @@ namespace Behavioral\Interpreter;
 
 class Interpreter implements InterpreterInterface
 {
-    /**
-     * @var array
-     */
-    private $registry;
+    private array $registry;
 
     /**
      * @param  AlbumInterface  $item
