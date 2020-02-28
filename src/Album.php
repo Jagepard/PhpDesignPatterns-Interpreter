@@ -11,14 +11,8 @@ namespace Behavioral\Interpreter;
 
 class Album implements AlbumInterface
 {
-    /**
-     * @var string
-     */
-    private $name;
-    /**
-     * @var string
-     */
-    private $author;
+    private string $name;
+    private string $author;
 
     /**
      * Album constructor.
