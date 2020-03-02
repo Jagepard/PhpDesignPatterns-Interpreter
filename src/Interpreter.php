@@ -26,7 +26,6 @@ class Interpreter implements InterpreterInterface
      */
     public function interpret(string $input): void
     {
-        $item = null;
         $input = explode(" ", $input);
 
         foreach ($input as $value) {
