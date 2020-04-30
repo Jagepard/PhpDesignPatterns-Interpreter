@@ -7,3 +7,11 @@
 
 # Interpreter
 ```php run``` execute in terminal
+
+## Result:
+```
+Deftones 
+Deftones Adrenaline
+Korn Untouchables
+Untouchables
+```
