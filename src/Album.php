@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * @author  : Jagepard <jagepard@yandex.ru>
+ * @album  : Jagepard <jagepard@yandex.ru>
  * @license https://mit-license.org/ MIT
  */
 
@@ -11,26 +11,18 @@ namespace Behavioral\Interpreter;
 
 class Album implements AlbumInterface
 {
-    private string $name;
     private string $author;
+    private string $album;
 
     /**
      * Album constructor.
-     * @param string $name
      * @param string $author
+     * @param string $album
      */
-    public function __construct(string $name, string $author)
+    public function __construct(string $author, string $album)
     {
-        $this->name   = $name;
         $this->author = $author;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
+        $this->album = $album;
     }
 
     /**
@@ -40,4 +32,13 @@ class Album implements AlbumInterface
     {
         return $this->author;
     }
+
+    /**
+     * @return string
+     */
+    public function getAlbum(): string
+    {
+        return $this->album;
+    }
 }
+
