@@ -11,46 +11,49 @@ namespace Behavioral\Interpreter;
 
 class Interpreter implements InterpreterInterface
 {
-    private array $registry;
+    private array $registryData;
 
-    /**
-     * @param  AlbumInterface  $item
-     */
-    public function addAlbumToRegistry(AlbumInterface $item): void
+    public function __construct(RegistryInterface $registry)
     {
-        $this->registry[] = $item;
+        $this->registryData = $registry->getData();
     }
 
     /**
-     * @param  string  $input
+     * @param string $input
+     * @return array
      */
-    public function interpret(string $input): void
+    public function interpret(string $input): array
     {
         $input = explode(' ', $input);
 
         foreach ($input as $value) {
             if (is_numeric($value)) {
-                $this->getDataFromRegistry($input, $this->registry[$value - 1]);
+                return $this->getDataFromRegistry($input, $this->registryData[$value - 1]);
             }
         }
+
+        throw new \InvalidArgumentException("No id specified");
     }
 
     /**
-     * @param  array  $input
-     * @param $item
+     * @param array $input
+     * @param AlbumInterface $item
+     * @return array
      */
-    private function getDataFromRegistry(array $input, AlbumInterface $item): void
+    private function getDataFromRegistry(array $input, AlbumInterface $item): array
     {
+        $dataArray = [];
+
         foreach ($input as $value) {
-            if ($value === "album") {
-                printf("%s ", $item->getName());
+            if ($value === "author") {
+                $dataArray["author"] = $item->getAuthor();
             }
 
-            if ($value === "author") {
-                printf("%s", $item->getAuthor());
+            if ($value === "album") {
+                $dataArray["album"] = $item->getAlbum();
             }
         }
 
-        printf("%s", PHP_EOL);
+        return $dataArray;
     }
 }
