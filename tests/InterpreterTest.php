@@ -9,11 +9,7 @@ declare(strict_types=1);
 
 namespace Behavioral\Interpreter\Tests;
 
-use Behavioral\Interpreter\{
-    Album, 
-    Interpreter, 
-    InterpreterInterface
-};
+use Behavioral\Interpreter\{Album, CardFile, Interpreter, InterpreterInterface};
 use PHPUnit\Framework\TestCase as PHPUnit_Framework_TestCase;
 
 class InterpreterTest extends PHPUnit_Framework_TestCase
@@ -22,34 +18,21 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
 
     protected function setUp(): void
     {
-        $this->interpreter = new Interpreter();
-        $this->interpreter->addAlbumToRegistry(new Album('Korn', 'Untouchables'));
-        $this->interpreter->addAlbumToRegistry(new Album('Deftones', 'Adrenaline'));
+        $cardFile = new CardFile();
+        $cardFile->addAlbum(new Album("Korn", "Untouchables"));
+        $cardFile->addAlbum(new Album("Deftones", "Adrenaline"));
+        $this->interpreter = new Interpreter($cardFile);
     }
 
     public function testAlbum(): void
     {
-        ob_start();
-        $this->interpreter->interpret('album 2');
-        $album = ob_get_clean();
-        $this->assertEquals($album, sprintf("%s \n",  'Deftones'));
-
-        ob_start();
-        $this->interpreter->interpret('2 album');
-        $album = ob_get_clean();
-        $this->assertEquals($album, sprintf("%s \n",  'Deftones'));
+        $this->assertEquals(["author" => "Deftones"], $this->interpreter->interpret("author 2"));
+        $this->assertEquals(["author" => "Deftones"], $this->interpreter->interpret("2 author"));
     }
 
     public function testAuthor(): void
     {
-        ob_start();
-        $this->interpreter->interpret('author 2');
-        $album = ob_get_clean();
-        $this->assertEquals($album, sprintf("%s\n",  'Adrenaline'));
-
-        ob_start();
-        $this->interpreter->interpret('2 author');
-        $album = ob_get_clean();
-        $this->assertEquals($album, sprintf("%s\n",  'Adrenaline'));
+        $this->assertEquals(["album" => "Adrenaline"], $this->interpreter->interpret("album 2"));
+        $this->assertEquals(["album" => "Adrenaline"], $this->interpreter->interpret("2 album"));
     }
 }
