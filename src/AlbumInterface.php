@@ -12,10 +12,10 @@ interface AlbumInterface
     /**
      * @return string
      */
-    public function getName(): string;
+    public function getAuthor(): string;
 
     /**
      * @return string
      */
-    public function getAuthor(): string;
+    public function getAlbum(): string;
 }
