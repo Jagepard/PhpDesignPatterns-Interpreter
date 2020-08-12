@@ -9,8 +9,5 @@ namespace Behavioral\Interpreter;
 
 interface RegistryInterface
 {
-    /**
-     * @return array
-     */
     public function getData(): array;
 }

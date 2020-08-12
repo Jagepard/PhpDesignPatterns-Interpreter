@@ -9,13 +9,6 @@ namespace Behavioral\Interpreter;
 
 interface AlbumInterface
 {
-    /**
-     * @return string
-     */
     public function getAuthor(): string;
-
-    /**
-     * @return string
-     */
     public function getAlbum(): string;
 }
