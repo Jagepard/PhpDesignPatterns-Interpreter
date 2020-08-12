@@ -18,10 +18,6 @@ class Interpreter implements InterpreterInterface
         $this->registryData = $registry->getData();
     }
 
-    /**
-     * @param string $input
-     * @return array
-     */
     public function interpret(string $input): array
     {
         $input = explode(' ', $input);
@@ -35,11 +31,6 @@ class Interpreter implements InterpreterInterface
         throw new \InvalidArgumentException("No id specified");
     }
 
-    /**
-     * @param array $input
-     * @param AlbumInterface $item
-     * @return array
-     */
     private function getDataFromRegistry(array $input, AlbumInterface $item): array
     {
         $dataArray = [];
