@@ -11,5 +11,5 @@ namespace Behavioral\Interpreter;
 
 interface InterpreterInterface
 {
-    public function interpret(string $input): array;
+    public function interpret(string $input): string;
 }

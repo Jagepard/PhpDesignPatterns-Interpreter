@@ -18,33 +18,23 @@ class Interpreter implements InterpreterInterface
         $this->registryData = $registry->getData();
     }
 
-    public function interpret(string $input): array
+    public function interpret(string $input): string
     {
-        $input = explode(' ', $input);
+        $num    = 0;
+        $output = [];
 
-        foreach ($input as $value) {
-            if (is_numeric($value)) {
-                return $this->getDataFromRegistry($input, $this->registryData[$value - 1]);
-            }
+        if (preg_match('~[0-9]+~', $input, $match)) {
+            $num = $match[0] - 1;
         }
 
-        throw new \InvalidArgumentException("No id specified");
-    }
-
-    private function getDataFromRegistry(array $input, AlbumInterface $item): array
-    {
-        $dataArray = [];
-
-        foreach ($input as $value) {
-            if ($value === "author") {
-                $dataArray["author"] = $item->getAuthor();
-            }
-
-            if ($value === "album") {
-                $dataArray["album"] = $item->getAlbum();
-            }
+        if (preg_match('~author~', $input)) {
+            $output[] = $this->registryData[$num]->getAuthor();
         }
 
-        return $dataArray;
+        if (preg_match('~album~', $input)) {
+            $output[] = $this->registryData[$num]->getAlbum();
+        }
+
+        return implode(' ', $output) . "\n";
     }
 }

@@ -26,13 +26,13 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
 
     public function testAlbum(): void
     {
-        $this->assertEquals(["author" => "Deftones"], $this->interpreter->interpret("author 2"));
-        $this->assertEquals(["author" => "Deftones"], $this->interpreter->interpret("2 author"));
+        $this->assertEquals("Deftones\n", $this->interpreter->interpret("author 2"));
+        $this->assertEquals("Deftones\n", $this->interpreter->interpret("2 author"));
     }
 
     public function testAuthor(): void
     {
-        $this->assertEquals(["album" => "Adrenaline"], $this->interpreter->interpret("album 2"));
-        $this->assertEquals(["album" => "Adrenaline"], $this->interpreter->interpret("2 album"));
+        $this->assertEquals("Adrenaline\n", $this->interpreter->interpret("album 2"));
+        $this->assertEquals("Adrenaline\n", $this->interpreter->interpret("2 album"));
     }
 }
