@@ -27,11 +27,15 @@ class Interpreter implements InterpreterInterface
             $num = $match[0] - 1;
         }
 
-        if (preg_match('~author~', $input)) {
+        if (!array_key_exists($num, $this->registryData)) {
+            throw new \InvalidArgumentException("Element $num does not exist in the registry");
+        }
+
+        if (strpos($input, 'author') !== false) {
             $output[] = $this->registryData[$num]->getAuthor();
         }
 
-        if (preg_match('~album~', $input)) {
+        if (strpos($input, 'album') !== false) {
             $output[] = $this->registryData[$num]->getAlbum();
         }
 
