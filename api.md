@@ -1,68 +1,66 @@
 ## Table of contents
+- [Behavioral\Interpreter\Album](#behavioral_interpreter_album)
+- [Behavioral\Interpreter\AlbumInterface](#behavioral_interpreter_albuminterface)
+- [Behavioral\Interpreter\CardFile](#behavioral_interpreter_cardfile)
+- [Behavioral\Interpreter\Interpreter](#behavioral_interpreter_interpreter)
+- [Behavioral\Interpreter\InterpreterInterface](#behavioral_interpreter_interpreterinterface)
+- [Behavioral\Interpreter\RegistryInterface](#behavioral_interpreter_registryinterface)
+<hr>
 
-- [\Behavioral\Interpreter\Album](#class-behavioralinterpreteralbum)
-- [\Behavioral\Interpreter\AlbumInterface (interface)](#interface-behavioralinterpreteralbuminterface)
-- [\Behavioral\Interpreter\CardFile](#class-behavioralinterpretercardfile)
-- [\Behavioral\Interpreter\Interpreter](#class-behavioralinterpreterinterpreter)
-- [\Behavioral\Interpreter\InterpreterInterface (interface)](#interface-behavioralinterpreterinterpreterinterface)
-- [\Behavioral\Interpreter\RegistryInterface (interface)](#interface-behavioralinterpreterregistryinterface)
+<a id="behavioral_interpreter_album"></a>
 
-<hr />
-
-### Class: \Behavioral\Interpreter\Album
-
+### Class: Behavioral\Interpreter\Album
+##### implements [Behavioral\Interpreter\AlbumInterface](#behavioral_interpreter_albuminterface)
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__construct(</strong><em>\string</em> <strong>$author</strong>, <em>\string</em> <strong>$album</strong>)</strong> : <em>void</em><br /><em>Album constructor.</em> |
-| public | <strong>getAlbum()</strong> : <em>string</em> |
-| public | <strong>getAuthor()</strong> : <em>string</em> |
+|public|<em><strong>__construct</strong>( string $author  string $album )</em><br>Sets the author and album titles<br>Устанваливает наименования автор и альбом|
+|public|<em><strong>getAuthor</strong>(): string</em><br>Gets the name of the author of the album<br>Получает наименование автора альбома|
+|public|<em><strong>getAlbum</strong>(): string</em><br>Gets the title of the album<br>Получает название альбома|
 
-*This class implements [\Behavioral\Interpreter\AlbumInterface](#interface-behavioralinterpreteralbuminterface)*
 
-<hr />
+<a id="behavioral_interpreter_albuminterface"></a>
 
-### Interface: \Behavioral\Interpreter\AlbumInterface
-
+### Class: Behavioral\Interpreter\AlbumInterface
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>getAlbum()</strong> : <em>string</em> |
-| public | <strong>getAuthor()</strong> : <em>string</em> |
+|abstract public|<em><strong>getAuthor</strong>(): string</em><br>|
+|abstract public|<em><strong>getAlbum</strong>(): string</em><br>|
 
-<hr />
 
-### Class: \Behavioral\Interpreter\CardFile
+<a id="behavioral_interpreter_cardfile"></a>
 
+### Class: Behavioral\Interpreter\CardFile
+##### implements [Behavioral\Interpreter\RegistryInterface](#behavioral_interpreter_registryinterface)
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>addAlbum(</strong><em>[\Behavioral\Interpreter\AlbumInterface](#interface-behavioralinterpreteralbuminterface)</em> <strong>$item</strong>)</strong> : <em>void</em> |
-| public | <strong>getData()</strong> : <em>array</em> |
+|public|<em><strong>addAlbum</strong>( Behavioral\Interpreter\AlbumInterface $item ): void</em><br>Adds an album to the card index<br>Добавляет альбом в картотеку|
+|public|<em><strong>getData</strong>(): array</em><br>Recalls the entire $data<br>Вызывает всю картотеку|
 
-*This class implements [\Behavioral\Interpreter\RegistryInterface](#interface-behavioralinterpreterregistryinterface)*
 
-<hr />
+<a id="behavioral_interpreter_interpreter"></a>
 
-### Class: \Behavioral\Interpreter\Interpreter
-
+### Class: Behavioral\Interpreter\Interpreter
+##### implements [Behavioral\Interpreter\InterpreterInterface](#behavioral_interpreter_interpreterinterface)
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__construct(</strong><em>[\Behavioral\Interpreter\RegistryInterface](#interface-behavioralinterpreterregistryinterface)</em> <strong>$registry</strong>)</strong> : <em>void</em> |
-| public | <strong>interpret(</strong><em>\string</em> <strong>$input</strong>)</strong> : <em>array</em> |
+|public|<em><strong>__construct</strong>( Behavioral\Interpreter\RegistryInterface $registry )</em><br>Receives filing data<br>Принимает данные картотеки|
+|public|<em><strong>interpret</strong>( string $input ): string</em><br>Interpret the request according to the incoming $input string<br>Инерпретирует запрос в соответствии со входящей строкой $input|
 
-*This class implements [\Behavioral\Interpreter\InterpreterInterface](#interface-behavioralinterpreterinterpreterinterface)*
 
-<hr />
+<a id="behavioral_interpreter_interpreterinterface"></a>
 
-### Interface: \Behavioral\Interpreter\InterpreterInterface
-
+### Class: Behavioral\Interpreter\InterpreterInterface
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>interpret(</strong><em>\string</em> <strong>$input</strong>)</strong> : <em>array</em> |
+|abstract public|<em><strong>interpret</strong>( string $input ): string</em><br>|
 
-<hr />
 
-### Interface: \Behavioral\Interpreter\RegistryInterface
+<a id="behavioral_interpreter_registryinterface"></a>
 
+### Class: Behavioral\Interpreter\RegistryInterface
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>getData()</strong> : <em>array</em> |
+|abstract public|<em><strong>getData</strong>(): array</em><br>|
+<hr>
 
+###### created with [Rudra-Documentation-Collector](#https://github.com/Jagepard/Rudra-Documentation-Collector)

@@ -11,5 +11,9 @@ namespace Behavioral\Interpreter;
 
 interface InterpreterInterface
 {
+    /**
+     * @param  string $input
+     * @return string
+     */
     public function interpret(string $input): string;
 }

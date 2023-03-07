@@ -13,11 +13,26 @@ class Interpreter implements InterpreterInterface
 {
     private array $registryData;
 
+    /**
+     * Receives filing data
+     * --------------------------
+     * Принимает данные картотеки
+     *
+     * @param  RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         $this->registryData = $registry->getData();
     }
 
+    /**
+     * Interpret the request according to the incoming $input string
+     * --------------------------------------------------------------
+     * Инерпретирует запрос в соответствии со входящей строкой $input
+     *
+     * @param  string $input
+     * @return string
+     */
     public function interpret(string $input): string
     {
         $num    = 0;
