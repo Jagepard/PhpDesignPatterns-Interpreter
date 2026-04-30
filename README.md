@@ -5,12 +5,12 @@
 -----
 
 # Interpreter | [API](https://github.com/Jagepard/PhpDesignPatterns-Interpreter/blob/master/api.md)
-```php main.php``` execute in terminal
+```php run``` execute in terminal
 
 ## Result:
 ```
-Deftones 
-Deftones Adrenaline
-Korn Untouchables
-Untouchables
+Album: Adrenaline
+Album: Adrenaline, Author: Deftones
+Album: Untouchables, Author: Korn
+Author: Korn
 ```

@@ -2,58 +2,49 @@
 
 declare(strict_types=1);
 
-/**
- * @author  : Jagepard <jagepard@yandex.ru>
- * @license https://mit-license.org/ MIT
- */
-
 namespace Behavioral\Interpreter;
 
 class Interpreter implements InterpreterInterface
 {
-    private array $registryData;
+    public function __construct(private CardFile $cardFile) {}
 
     /**
-     * Receives filing data
-     * --------------------------
-     * Принимает данные картотеки
+     * Interpret the request according to the incoming string
+     * -------------------------------------------------------
+     * Инерпретирует запрос в соответствии со входящей строкой
      *
-     * @param  RegistryInterface $registry
-     */
-    public function __construct(RegistryInterface $registry)
-    {
-        $this->registryData = $registry->getData();
-    }
-
-    /**
-     * Interpret the request according to the incoming $input string
-     * --------------------------------------------------------------
-     * Инерпретирует запрос в соответствии со входящей строкой $input
-     *
-     * @param  string $input
+     * @param  string $inputString
      * @return string
      */
-    public function interpret(string $input): string
+    public function interpret(string $inputString): string
     {
-        $num    = 0;
         $output = [];
 
-        if (preg_match('~[0-9]+~', $input, $match)) {
-            $num = $match[0] - 1;
+        if (preg_match('~[0-9]+~', $inputString, $match)) {
+            $index = $match[0] - 1;
+        } else {
+            throw new \InvalidArgumentException("Неверный запрос. Введите 'album 2' или '3 author'.");
         }
 
-        if (!array_key_exists($num, $this->registryData)) {
-            throw new \InvalidArgumentException("Element $num does not exist in the registry");
+        $parts  = explode(' ', $inputString);
+        $albums = $this->cardFile->getAlbums();
+
+        if (!isset($albums[$index])) {
+            throw new \InvalidArgumentException("Альбом с индексом {$match[0]} не найден. Всего доступно: " . count($albums));
         }
 
-        if (strpos($input, 'author') !== false) {
-            $output[] = $this->registryData[$num]->getAuthor();
+        $album = $albums[$index];
+
+        foreach ($parts as $part) {
+            if ($part === 'album') {
+                $output[] = sprintf("Album: %s", $album->getAlbum());  
+            }
+
+            if ($part === 'author') {
+                $output[] = sprintf("Author: %s", $album->getAuthor());  
+            }
         }
 
-        if (strpos($input, 'album') !== false) {
-            $output[] = $this->registryData[$num]->getAlbum();
-        }
-
-        return implode(' ', $output) . "\n";
+        return implode(', ', $output) . PHP_EOL;
     }
 }

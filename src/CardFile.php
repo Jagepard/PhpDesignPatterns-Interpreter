@@ -2,39 +2,23 @@
 
 declare(strict_types=1);
 
-/**
- * @author  : Jagepard <jagepard@yandex.ru>
- * @license https://mit-license.org/ MIT
- */
-
 namespace Behavioral\Interpreter;
 
-final class CardFile implements RegistryInterface
+final class CardFile
 {
-    private array $data;
+    private array $albums = [];
 
-    /**
-     * Adds an album to the card index
-     * -------------------------------
-     * Добавляет альбом в картотеку
-     *
-     * @param  AlbumInterface $item
-     * @return void
-     */
-    public function addAlbum(AlbumInterface $item): void
+    public function addAlbum(Album $album) 
     {
-        $this->data[] = $item;
+        if(in_array($album, $this->albums)) {
+            throw new \Exception("Album already exists");
+        }
+
+        $this->albums[] = $album;
     }
 
-    /**
-     * Recalls the entire $data
-     * ------------------------
-     * Вызывает всю картотеку
-     *
-     * @return array
-     */
-    public function getData(): array
+    public function getAlbums(): array
     {
-        return $this->data;
+        return $this->albums;
     }
 }
